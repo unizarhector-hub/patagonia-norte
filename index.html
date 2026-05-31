@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios Técnicos Patagonia Norte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #0a0a0a;
+    --acero: #1c2b3a;
+    --petroleo: #0d3349;
+    --naranja: #e8510a;
+    --naranja-claro: #ff6b2b;
+    --gris: #8a9bb0;
+    --gris-claro: #d4dde6;
+    --blanco: #f5f7fa;
+    --linea: rgba(232,81,10,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--negro);
+    color: var(--blanco);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVBAR ─────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 4rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--linea);
+  }
+
+  .logo {
+    display: flex; flex-direction: column; line-height: 1;
+  }
+  .logo-top {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem; letter-spacing: 4px;
+    color: var(--naranja);
+  }
+  .logo-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; letter-spacing: 6px;
+    color: var(--gris); text-transform: uppercase;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gris-claro);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--naranja); }
+
+  .nav-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--negro);
+    background: var(--naranja); border: none;
+    padding: 0.6rem 1.6rem; cursor: pointer;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.3s;
+  }
+  .nav-cta:hover { background: var(--naranja-claro); }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      linear-gradient(135deg, rgba(13,51,73,0.85) 0%, rgba(10,10,10,0.95) 60%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(232,81,10,0.04) 40px,
+        rgba(232,81,10,0.04) 41px
+      );
+  }
+
+  .hero-grid-line {
+    position: absolute;
+    right: 0; top: 0; bottom: 0; width: 45%;
+    background: linear-gradient(90deg, transparent, rgba(232,81,10,0.06));
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .hero-accent {
+    position: absolute; right: 8%; top: 15%;
+    width: 300px; height: 300px;
+    border: 1px solid rgba(232,81,10,0.15);
+    border-radius: 50%;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  .hero-accent::before {
+    content: ''; position: absolute; inset: 30px;
+    border: 1px solid rgba(232,81,10,0.1);
+    border-radius: 50%;
+    animation: pulse 4s ease-in-out infinite 1s;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.6; }
+  }
+
+  .hero-content { position: relative; max-width: 700px; }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--naranja);
+    margin-bottom: 1.5rem;
+  }
+  .hero-tag::before {
+    content: ''; display: block;
+    width: 30px; height: 1px; background: var(--naranja);
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 0.95; letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title span { color: var(--naranja); }
+
+  .hero-desc {
+    font-size: 1.05rem; font-weight: 300;
+    line-height: 1.7; color: var(--gris-claro);
+    max-width: 520px; margin-bottom: 2.5rem;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--negro);
+    background: var(--naranja); border: none;
+    padding: 1rem 2.5rem; cursor: pointer; text-decoration: none;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: all 0.3s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--naranja-claro); transform: translateY(-2px); }
+
+  .btn-outline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--naranja);
+    background: transparent;
+    border: 1px solid var(--naranja);
+    padding: 1rem 2.5rem; cursor: pointer; text-decoration: none;
+    transition: all 0.3s; display: inline-block;
+  }
+  .btn-outline:hover { background: rgba(232,81,10,0.1); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem; color: var(--naranja); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gris);
+  }
+
+  /* ─── SECTION BASE ────────────────────────────────────── */
+  section { padding: 6rem 4rem; }
+
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--naranja);
+    margin-bottom: 1rem;
+  }
+  .section-tag::before {
+    content: ''; width: 20px; height: 1px; background: var(--naranja);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    letter-spacing: 2px; line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+  .section-title span { color: var(--naranja); }
+
+  .section-desc {
+    font-size: 1rem; font-weight: 300;
+    color: var(--gris-claro); line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* ─── SERVICIOS ───────────────────────────────────────── */
+  #servicios { background: var(--acero); }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px; margin-top: 3rem;
+  }
+
+  .servicio-card {
+    background: var(--petroleo);
+    padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+    transition: all 0.4s;
+    cursor: default;
+  }
+
+  .servicio-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--naranja);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .servicio-card:hover { background: #0e3d55; transform: translateY(-4px); }
+  .servicio-card:hover::before { transform: scaleX(1); }
+
+  .servicio-icon {
+    font-size: 2.5rem; margin-bottom: 1.2rem; display: block;
+  }
+
+  .servicio-num {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem; color: rgba(232,81,10,0.08);
+    line-height: 1;
+  }
+
+  .servicio-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 0.8rem; color: var(--blanco);
+  }
+
+  .servicio-card p {
+    font-size: 0.9rem; line-height: 1.7;
+    color: var(--gris); font-weight: 300;
+  }
+
+  .servicio-items {
+    margin-top: 1.2rem; list-style: none;
+  }
+  .servicio-items li {
+    font-size: 0.82rem; color: var(--gris-claro);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .servicio-items li::before {
+    content: '▸'; color: var(--naranja); font-size: 0.7rem;
+  }
+
+  /* ─── VÁLVULAS ─────────────────────────────────────────── */
+  #valvulas { background: var(--negro); }
+
+  .valvulas-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; margin-top: 3rem; align-items: start;
+  }
+
+  .valvulas-intro { margin-bottom: 2rem; }
+
+  .valvulas-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-top: 1.5rem;
+  }
+
+  .valvula-item {
+    background: var(--acero);
+    border: 1px solid rgba(232,81,10,0.15);
+    padding: 1.2rem;
+    transition: border-color 0.3s;
+  }
+  .valvula-item:hover { border-color: var(--naranja); }
+
+  .valvula-item .tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--naranja);
+    margin-bottom: 0.4rem; display: block;
+  }
+  .valvula-item h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--blanco); margin-bottom: 0.3rem;
+  }
+  .valvula-item p {
+    font-size: 0.78rem; color: var(--gris);
+  }
+
+  .specs-box {
+    background: var(--acero);
+    border-left: 3px solid var(--naranja);
+    padding: 2rem;
+  }
+  .specs-box h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--naranja);
+    margin-bottom: 1.5rem;
+  }
+  .spec-row {
+    display: flex; justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.85rem;
+  }
+  .spec-row .key { color: var(--gris); font-weight: 300; }
+  .spec-row .val { color: var(--blanco); font-weight: 600; }
+
+  .flv-badge {
+    margin-top: 1.5rem; padding: 1rem 1.2rem;
+    background: rgba(232,81,10,0.1);
+    border: 1px solid rgba(232,81,10,0.3);
+    font-size: 0.82rem; color: var(--gris-claro); line-height: 1.6;
+  }
+  .flv-badge strong { color: var(--naranja); }
+
+  /* ─── MAQUINARIA ──────────────────────────────────────── */
+  #maquinaria { background: #111; }
+
+  .maq-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; margin-top: 3rem;
+  }
+
+  .maq-card {
+    background: var(--acero);
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .maq-card:hover {
+    border-bottom-color: var(--naranja);
+    background: #1f3245;
+    transform: translateY(-3px);
+  }
+
+  .maq-icon { font-size: 2.2rem; margin-bottom: 0.8rem; display: block; }
+
+  .maq-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.95rem; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 0.4rem; color: var(--blanco);
+  }
+  .maq-card p { font-size: 0.8rem; color: var(--gris); }
+
+  .maq-lista {
+    margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .maq-item {
+    background: rgba(28,43,58,0.5);
+    padding: 0.7rem 1rem;
+    font-size: 0.82rem; color: var(--gris-claro);
+    display: flex; align-items: center; gap: 0.5rem;
+    border-left: 2px solid rgba(232,81,10,0.3);
+  }
+  .maq-item span { color: var(--naranja); font-weight: 700; font-size: 0.7rem; }
+
+  /* ─── OBRAS ───────────────────────────────────────────── */
+  #obras { background: var(--acero); }
+
+  .obras-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+
+  .obra-card {
+    background: var(--negro);
+    padding: 1.8rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .obra-card:hover { border-color: rgba(232,81,10,0.4); }
+
+  .obra-sector {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--naranja);
+    margin-bottom: 0.5rem; display: block;
+  }
+
+  .obra-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.05rem; font-weight: 700;
+    margin-bottom: 0.5rem; color: var(--blanco);
+  }
+  .obra-card p { font-size: 0.83rem; color: var(--gris); line-height: 1.6; }
+
+  /* ─── CLIENTES ────────────────────────────────────────── */
+  #clientes { background: var(--negro); text-align: center; }
+
+  .clientes-strip {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .cliente-pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gris);
+    background: var(--acero);
+    padding: 0.6rem 1.4rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s;
+  }
+  .cliente-pill:hover { color: var(--naranja); border-color: var(--naranja); }
+
+  /* ─── CONTACTO ────────────────────────────────────────── */
+  #contacto {
+    background: var(--petroleo);
+    position: relative; overflow: hidden;
+  }
+  #contacto::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 50px,
+      rgba(232,81,10,0.03) 50px,
+      rgba(232,81,10,0.03) 51px
+    );
+  }
+
+  .contacto-layout {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 5rem; position: relative;
+  }
+
+  .contacto-info h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1; margin-bottom: 1rem;
+  }
+  .contacto-info h2 span { color: var(--naranja); }
+  .contacto-info p { font-size: 0.95rem; color: var(--gris-claro); line-height: 1.7; margin-bottom: 2rem; }
+
+  .contacto-dato {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .dato-icon { font-size: 1.2rem; margin-top: 0.1rem; }
+  .dato-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--naranja);
+    display: block; margin-bottom: 0.2rem;
+  }
+  .dato-val { font-size: 0.9rem; color: var(--gris-claro); }
+
+  .contacto-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gris);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--blanco); padding: 0.8rem 1rem;
+    font-family: 'Barlow', sans-serif; font-size: 0.9rem;
+    outline: none; transition: border-color 0.3s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--naranja); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group select option { background: var(--acero); }
+
+  .form-submit {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.9rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--negro);
+    background: var(--naranja); border: none;
+    padding: 1rem 2rem; cursor: pointer;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: background 0.3s; align-self: flex-start;
+    width: 100%;
+  }
+  .form-submit:hover { background: var(--naranja-claro); }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: var(--negro);
+    border-top: 1px solid rgba(232,81,10,0.2);
+    padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem; letter-spacing: 4px;
+    color: var(--naranja);
+  }
+  .footer-copy {
+    font-size: 0.78rem; color: var(--gris);
+  }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-size: 0.78rem; color: var(--gris);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--naranja); }
+
+  /* ─── SCROLL ANIMATIONS ───────────────────────────────── */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 3rem; }
+    .servicios-grid { grid-template-columns: 1fr; }
+    .valvulas-layout { grid-template-columns: 1fr; }
+    .valvulas-grid { grid-template-columns: 1fr 1fr; }
+    .maq-grid { grid-template-columns: repeat(2,1fr); }
+    .maq-lista { grid-template-columns: 1fr 1fr; }
+    .obras-grid { grid-template-columns: 1fr; }
+    .contacto-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─────────────────────────────────────────── -->
+<nav>
+  <div class="logo">
+    <span class="logo-top">PATAGONIA NORTE</span>
+    <span class="logo-sub">Servicios Técnicos Industriales</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#valvulas">Válvulas</a></li>
+    <li><a href="#maquinaria">Maquinaria</a></li>
+    <li><a href="#obras">Obras</a></li>
+    <li><a href="#clientes">Clientes</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Cotizar</button>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-line"></div>
+  <div class="hero-accent"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Sector Petrolero & Gas — Patagonia Argentina</div>
+
+    <h1 class="hero-title">
+      SOLUCIONES<br>
+      TÉCNICAS<br>
+      <span>INTEGRALES</span>
+    </h1>
+
+    <p class="hero-desc">
+      Proveeduría de válvulas industriales API, obras civiles y mecánicas,
+      y alquiler de maquinaria pesada para el sector energético.
+      Todo lo que tu operación necesita, en un solo proveedor.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#servicios" class="btn-primary">Ver Servicios</a>
+      <a href="#contacto" class="btn-outline">Solicitar Cotización</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Líneas de Negocio</div>
+      </div>
+      <div>
+        <div class="stat-num">API</div>
+        <div class="stat-label">Válvulas Certificadas</div>
+      </div>
+      <div>
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Soporte Técnico</div>
+      </div>
+      <div>
+        <div class="stat-num">FLV</div>
+        <div class="stat-label">Distribuidor Oficial</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICIOS ─────────────────────────────────────── -->
+<section id="servicios">
+  <div class="reveal">
+    <div class="section-tag">Lo que hacemos</div>
+    <h2 class="section-title">NUESTROS <span>SERVICIOS</span></h2>
+    <p class="section-desc">Tres líneas de negocio diseñadas para cubrir la demanda completa de la industria petrolera y gasífera en la región.</p>
+  </div>
+
+  <div class="servicios-grid reveal">
+
+    <div class="servicio-card">
+      <span class="servicio-num">01</span>
+      <span class="servicio-icon">🔩</span>
+      <h3>Proveeduría de Válvulas</h3>
+      <p>Distribuidor de válvulas industriales FLV (Italia) con certificación API 6D. Stock disponible para entrega inmediata.</p>
+      <ul class="servicio-items">
+        <li>Válvulas de Bola API 6D (CS & FS)</li>
+        <li>Válvulas de Compuerta API 600</li>
+        <li>Válvulas Globo & Retención</li>
+        <li>Actuadores Neumáticos SIL-3</li>
+        <li>Actuadores Hidráulicos BTS-G</li>
+        <li>Clases ASME 150 a 4500</li>
+      </ul>
+    </div>
+
+    <div class="servicio-card">
+      <span class="servicio-num">02</span>
+      <span class="servicio-icon">🏗️</span>
+      <h3>Obras Civiles & Mecánicas</h3>
+      <p>Construcción, montaje y mantenimiento de instalaciones industriales con personal certificado y equipamiento propio.</p>
+      <ul class="servicio-items">
+        <li>Montaje de tuberías y estructuras</li>
+        <li>Obras civiles en planta</li>
+        <li>Instalaciones eléctricas</li>
+        <li>Prefabricación metalmecánica</li>
+        <li>Mantenimiento de plantas</li>
+        <li>Sandblasting y pintura industrial</li>
+      </ul>
+    </div>
+
+    <div class="servicio-card">
+      <span class="servicio-num">03</span>
+      <span class="servicio-icon">🚜</span>
+      <h3>Alquiler de Maquinaria</h3>
+      <p>Flota propia de maquinaria pesada disponible para proyectos industriales, viales y de movimiento de suelos.</p>
+      <ul class="servicio-items">
+        <li>Tractores de orugas D8, D9</li>
+        <li>Grúas telescópicas 22-75 t</li>
+        <li>Retroexcavadoras & Motoniveladoras</li>
+        <li>Compactadoras y Asfaltadoras</li>
+        <li>Máquinas de soldar diesel/eléctrica</li>
+        <li>Compresores 185-950 CFM</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── VÁLVULAS ──────────────────────────────────────── -->
+<section id="valvulas">
+  <div class="reveal">
+    <div class="section-tag">Línea Técnica</div>
+    <h2 class="section-title">VÁLVULAS <span>INDUSTRIALES</span></h2>
+    <p class="section-desc">Distribuidor autorizado de FLV Industrial Valves — Milano, Italia. Productos certificados API 6D para aplicaciones críticas en oil & gas.</p>
+  </div>
+
+  <div class="valvulas-layout">
+    <div class="reveal">
+      <div class="valvulas-grid">
+
+        <div class="valvula-item">
+          <span class="tag">API 6D</span>
+          <h4>Válvula de Bola</h4>
+          <p>Flotante y muñón. Acero fundido y forjado. 1/2" a 64". Clase 150-2500.</p>
+        </div>
+
+        <div class="valvula-item">
+          <span class="tag">API 600</span>
+          <h4>Válvula de Compuerta</h4>
+          <p>OS&Y, bonete atornillado. 1" a 56". Clases 150 a 2500 Lb.</p>
+        </div>
+
+        <div class="valvula-item">
+          <span class="tag">BS EN 13709</span>
+          <h4>Válvula Globo</h4>
+          <p>Sello de presión y bonete atornillado. 2" a 24". Clase 150-4500.</p>
+        </div>
+
+        <div class="valvula-item">
+          <span class="tag">API 594</span>
+          <h4>Válvula de Retención</h4>
+          <p>Oscilante y doble placa. 2" a 36". Clases 150 a 2500 Lb.</p>
+        </div>
+
+        <div class="valvula-item">
+          <span class="tag">SIL-3 TÜV</span>
+          <h4>Actuador Neumático</h4>
+          <p>Scotch Yoke BTS-G. 360 a 110.000 N·m. Certificado IEC EN 61508.</p>
+        </div>
+
+        <div class="valvula-item">
+          <span class="tag">Hidráulico</span>
+          <h4>Actuador Hidráulico</h4>
+          <p>Serie BTS-G-H. Doble efecto y retorno por resorte. 60-160 bar.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="specs-box">
+        <h3>Especificaciones Clave</h3>
+        <div class="spec-row"><span class="key">Norma principal</span><span class="val">API 6D / API 600</span></div>
+        <div class="spec-row"><span class="key">Rango de tamaños</span><span class="val">1/2" a 64" (DN 15 a 1600)</span></div>
+        <div class="spec-row"><span class="key">Clases de presión</span><span class="val">ASME 150 a 4500</span></div>
+        <div class="spec-row"><span class="key">Materiales cuerpo</span><span class="val">A216-WCB / A105 / A352-LCB</span></div>
+        <div class="spec-row"><span class="key">Resistencia al fuego</span><span class="val">API 607 / BS 6755</span></div>
+        <div class="spec-row"><span class="key">Antiestático</span><span class="val">API 608</span></div>
+        <div class="spec-row"><span class="key">Prueba e inspección</span><span class="val">API 598 / API 6D</span></div>
+        <div class="spec-row"><span class="key">Certificación actuadores</span><span class="val">TÜV SÜD SIL-3</span></div>
+        <div class="spec-row"><span class="key">Temperatura mínima</span><span class="val">-60°C (Ultra Low)</span></div>
+        <div class="spec-row"><span class="key">Temperatura máxima</span><span class="val">+150°C (High Temp)</span></div>
+
+        <div class="flv-badge">
+          <strong>FLV Industrial Valves</strong> — Milán, Italia<br>
+          Más de 30 años fabricando válvulas de alta especificación para
+          la industria petrolera, gasífera y petroquímica mundial.
+          Todos los productos disponibles con certificaciones ATEX, NACE y PED.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MAQUINARIA ────────────────────────────────────── -->
+<section id="maquinaria">
+  <div class="reveal">
+    <div class="section-tag">Flota Propia</div>
+    <h2 class="section-title">ALQUILER DE <span>MAQUINARIA</span></h2>
+    <p class="section-desc">Flota propia disponible para proyectos industriales, viales y de construcción. Operadores certificados incluidos en todos los contratos.</p>
+  </div>
+
+  <div class="maq-grid reveal">
+    <div class="maq-card">
+      <span class="maq-icon">🔧</span>
+      <h3>Movimiento de Suelos</h3>
+      <p>D9L, D9R, D8N, retroexcavadoras, motoniveladoras</p>
+    </div>
+    <div class="maq-card">
+      <span class="maq-icon">🏗️</span>
+      <h3>Izaje & Grúas</h3>
+      <p>Grúas Grove 22t y 75t, camión con brazo Pitman</p>
+    </div>
+    <div class="maq-card">
+      <span class="maq-icon">🛣️</span>
+      <h3>Vialidad</h3>
+      <p>Asfaltadora BLAW-KNOX, perfiladora PM-565B, compactadoras</p>
+    </div>
+    <div class="maq-card">
+      <span class="maq-icon">⚡</span>
+      <h3>Soldadura & Energía</h3>
+      <p>30+ máquinas de soldar diesel/eléctrica, plantas 65 KVA</p>
+    </div>
+    <div class="maq-card">
+      <span class="maq-icon">💨</span>
+      <h3>Compresores</h3>
+      <p>Sullair 950 CFM, Atlas Copco 185 CFM, Sullivan 250 CFM</p>
+    </div>
+    <div class="maq-card">
+      <span class="maq-icon">🚛</span>
+      <h3>Transporte</h3>
+      <p>Camiones de plataforma, montacargas 4.5t / 10t / 20t</p>
+    </div>
+    <div class="maq-card">
+      <span class="maq-icon">🧱</span>
+      <h3>Concreto</h3>
+      <p>Planta modular Alquezar MHA-120: 110 m³/hr</p>
+    </div>
+    <div class="maq-card">
+      <span class="maq-icon">🔩</span>
+      <h3>Herramientas</h3>
+      <p>Biseladora hasta 36", sandblasting, hydrojet, oxicorte</p>
+    </div>
+  </div>
+
+  <div class="maq-lista reveal">
+    <div class="maq-item"><span>CAT</span> Tractor de orugas D9L / D9R</div>
+    <div class="maq-item"><span>CAT</span> Tractor de orugas D8N</div>
+    <div class="maq-item"><span>GROVE</span> Grúa telescópica 22 toneladas</div>
+    <div class="maq-item"><span>75T</span> Grúa 75 toneladas</div>
+    <div class="maq-item"><span>CAT</span> Retroexcavadora 416D × 3</div>
+    <div class="maq-item"><span>VOLVO</span> Retroexcavadora BL60</div>
+    <div class="maq-item"><span>CAT</span> Motoniveladora 140H</div>
+    <div class="maq-item"><span>SULLAIR</span> Compresor 950 CFM</div>
+    <div class="maq-item"><span>BLAW-KNOX</span> Asfaltadora PF180H</div>
+    <div class="maq-item"><span>LINCOLN</span> Soldadora Diesel 375A × 10</div>
+    <div class="maq-item"><span>MILLER</span> Soldadora Diesel 400A × 10</div>
+    <div class="maq-item"><span>MILLER</span> Soldadora MIG 300A × 5</div>
+    <div class="maq-item"><span>TOYOTA</span> Montacargas 10.000 lbs</div>
+    <div class="maq-item"><span>HYSTER</span> Montacargas 20.000 lbs</div>
+    <div class="maq-item"><span>FG WILSON</span> Planta Eléctrica 65 KVA × 3</div>
+  </div>
+</section>
+
+<!-- ─── OBRAS ──────────────────────────────────────────── -->
+<section id="obras">
+  <div class="reveal">
+    <div class="section-tag">Trayectoria</div>
+    <h2 class="section-title">OBRAS <span>EJECUTADAS</span></h2>
+    <p class="section-desc">Amplia experiencia en proyectos para las principales empresas del sector energético, naval y de infraestructura.</p>
+  </div>
+
+  <div class="obras-grid reveal">
+
+    <div class="obra-card">
+      <span class="obra-sector">PDVSA / Gas</span>
+      <h3>Planta de Acondicionamiento de Gas PAGMI</h3>
+      <p>Fabricación e instalación de tuberías en campo y taller. Piperack y Slug Catcher del paquete de construcción N°2. Cliente: Consorcio ENPPI-Y&V.</p>
+    </div>
+
+    <div class="obra-card">
+      <span class="obra-sector">Infraestructura</span>
+      <h3>Planta Termoeléctrica Juan Manuel Valdez</h3>
+      <p>Cerramiento perimetral, montaje de tanques, protección catódica, asfaltado de vialidad interna. Cliente: ELECNOR Venezuela.</p>
+    </div>
+
+    <div class="obra-card">
+      <span class="obra-sector">Offshore / ConocoPhillips</span>
+      <h3>Operaciones Costa Afuera — Campo Pedernales</h3>
+      <p>Fabricación de centralizadores, Channel Ditch, Casing Head, plataformas de atraque, pasarelas de acceso entre gabarras.</p>
+    </div>
+
+    <div class="obra-card">
+      <span class="obra-sector">BP Exploración</span>
+      <h3>Muelle Flotante GECO en Capure</h3>
+      <p>Prefabricación total de muelle liviano. Instalación con Jack-up, pilotaje y reparación de puente de acceso. Campo Pedernales.</p>
+    </div>
+
+    <div class="obra-card">
+      <span class="obra-sector">Naval / Marino</span>
+      <h3>Adecuación de Gabarras Marítima VIII y IX</h3>
+      <p>Restauración y adecuación para posicionamiento de WHP. Reparaciones en embarcaciones Mercedes L., Seth Mc Call, Coquivacoa.</p>
+    </div>
+
+    <div class="obra-card">
+      <span class="obra-sector">Petrosucre</span>
+      <h3>Proyecto WHP — Consorcio Corocoro</h3>
+      <p>Participación como socio en el proyecto de instalación de WHP con Consorcio Corocoro. Limpieza de tanques de lodo en gabarra.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CLIENTES ──────────────────────────────────────── -->
+<section id="clientes">
+  <div class="reveal">
+    <div class="section-tag">Confianza comprobada</div>
+    <h2 class="section-title">NUESTROS <span>CLIENTES</span></h2>
+    <p class="section-desc" style="margin: 0 auto;">Trabajamos con las principales compañías del sector energético, naval e infraestructura de la región.</p>
+  </div>
+
+  <div class="clientes-strip reveal">
+    <div class="cliente-pill">PDVSA</div>
+    <div class="cliente-pill">Petrosucre</div>
+    <div class="cliente-pill">ConocoPhillips</div>
+    <div class="cliente-pill">BP Exploración</div>
+    <div class="cliente-pill">ELECNOR Venezuela</div>
+    <div class="cliente-pill">Consorcio ENPPI-Y&V</div>
+    <div class="cliente-pill">Halliburton</div>
+    <div class="cliente-pill">Baroid Venezuela</div>
+    <div class="cliente-pill">Tidewater Marine</div>
+    <div class="cliente-pill">Global Shipmanagement</div>
+    <div class="cliente-pill">Vensea Marine</div>
+    <div class="cliente-pill">Perenco Venezuela</div>
+    <div class="cliente-pill">Phillips Petroleum</div>
+    <div class="cliente-pill">VEPICA-Baker</div>
+    <div class="cliente-pill">M-I Drilling Fluids</div>
+    <div class="cliente-pill">Flag Instalaciones</div>
+  </div>
+</section>
+
+<!-- ─── CONTACTO ──────────────────────────────────────── -->
+<section id="contacto">
+  <div class="contacto-layout">
+    <div class="contacto-info reveal">
+      <h2>HABLEMOS DE<br><span>TU PROYECTO</span></h2>
+      <p>Contamos con el equipo técnico y la capacidad operativa para dar respuesta rápida a las necesidades de su operación. Solicite una cotización sin compromiso.</p>
+
+      <div class="contacto-dato">
+        <div class="dato-icon">📍</div>
+        <div>
+          <span class="dato-label">Ubicación</span>
+          <div class="dato-val">Patagonia Norte, Argentina<br>Zona de influencia: Neuquén — Vaca Muerta</div>
+        </div>
+      </div>
+
+      <div class="contacto-dato">
+        <div class="dato-icon">📞</div>
+        <div>
+          <span class="dato-label">Teléfono</span>
+          <div class="dato-val">+54 (299) 000-0000</div>
+        </div>
+      </div>
+
+      <div class="contacto-dato">
+        <div class="dato-icon">✉️</div>
+        <div>
+          <span class="dato-label">Email</span>
+          <div class="dato-val">contacto@patagonianorte.com.ar</div>
+        </div>
+      </div>
+
+      <div class="contacto-dato">
+        <div class="dato-icon">⏰</div>
+        <div>
+          <span class="dato-label">Atención</span>
+          <div class="dato-val">Lunes a Viernes 8:00 - 18:00<br>Soporte técnico 24/7 para emergencias</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <form class="contacto-form" onsubmit="handleForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Su nombre completo" required>
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" placeholder="Nombre de la empresa">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="correo@empresa.com" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+54 299 000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Servicio de Interés</label>
+          <select>
+            <option value="">Seleccionar servicio...</option>
+            <option>Válvulas Industriales FLV</option>
+            <option>Actuadores Neumáticos / Hidráulicos</option>
+            <option>Obras Civiles y Mecánicas</option>
+            <option>Alquiler de Maquinaria</option>
+            <option>Servicio Integral (múltiples líneas)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea placeholder="Describa su proyecto o necesidad..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar Consulta →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────── -->
+<footer>
+  <div class="footer-logo">PATAGONIA NORTE</div>
+  <div class="footer-copy">© 2025 Servicios Técnicos Patagonia Norte. Todos los derechos reservados.</div>
+  <div class="footer-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#valvulas">Válvulas</a>
+    <a href="#maquinaria">Maquinaria</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</footer>
+
+<script>
+  // ─── Scroll reveal ────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // stagger children
+        const kids = e.target.querySelectorAll('.servicio-card, .valvula-item, .maq-card, .obra-card, .cliente-pill, .maq-item');
+        kids.forEach((k, i) => {
+          k.style.transitionDelay = `${i * 0.07}s`;
+          k.classList.add('visible');
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ─── Form handler ─────────────────────────────────────
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Mensaje Enviado';
+    btn.style.background = '#27ae60';
+    setTimeout(() => {
+      btn.textContent = 'Enviar Consulta →';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+  // ─── Nav active state ─────────────────────────────────
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--naranja)' : '';
+    });
+  });
+</script>
+</body>
+</html>
